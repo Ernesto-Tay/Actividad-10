@@ -45,7 +45,7 @@ while True:
                 print("No hay productos ingresados")
             else:
                 for ID, producto in productos:
-                    print(f"\nCodigo: {ID}\nNombre: {producto['nombre']}\nCategoria: {producto['categoria']}\nTalla: {producto['talla']}\nPrecio: {producto['precio']}\nStock: {producto['stock']}")
+                    print(f"\nCodigo: {ID}\nNombre: {producto['nombre']}\nCategoria: {producto['categoria']}\nTalla: {producto['talla']}\nPrecio: Q{producto['precio']}\nStock: {producto['stock']}")
 
         case 3:
             if not productos:
@@ -53,7 +53,7 @@ while True:
             else:
                 ID_search = input("Ingrese el código del producto que desea buscar: ")
                 if ID_search in productos:
-                    print(f"\nProducto encontrado\nNombre: {productos[ID_search]['nombre']}\nCategoria: {productos[ID_search]['categoria']}\nTalla: {productos[ID_search]['talla']}\nPrecio: {productos[ID_search]['precio']}\nStock: {productos[ID_search]['stock']}")
+                    print(f"\nProducto encontrado\nNombre: {productos[ID_search]['nombre']}\nCategoria: {productos[ID_search]['categoria']}\nTalla: {productos[ID_search]['talla']}\nPrecio: Q{productos[ID_search]['precio']}\nStock: {productos[ID_search]['stock']}")
                 else:
                     print("No se encontrado un producto con ese código")
         case 4:
@@ -63,11 +63,28 @@ while True:
                 total = 0
                 for ID, producto in productos:
                     total += producto['precio'] * producto['stock']
-                    print(f"\nNombre: {producto['nombre']}\n Subtotal: {producto['precio']*producto['stock']}")
-                print(f"Total: {total}")
+                    print(f"\nNombre: {producto['nombre']}\n Subtotal: Q{producto['precio']*producto['stock']}")
+                print(f"Total: Q{total}")
 
         case 5:
-            pass
+            if not productos:
+                print("No hay productos ingresados")
+            else:
+                categorias = []
+                for ID, producto in productos:
+                    if producto['categoria'] not in categorias:
+                        categorias.append(producto['categoria'])
+
+                for i in range(len(categorias)):
+                    print(f"\nCategoría: {categorias[i]}")
+                    categoria_cant = 0
+                    for ID, producto in productos:
+                        if producto['categoria'] == categorias[i]:
+                            categoria_cant += 1
+                            print(f"\nNombre: {producto}" + f"     talla: {producto['talla']}"+f"     Precio: Q{producto['precio']}" + f"     Stock: {producto['stock']}")
+
+
+
         case 6:
             print("Saliendo del programa...")
             break
