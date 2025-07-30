@@ -1,4 +1,4 @@
-productos = []
+productos = {}
 while True:
     print("\n\n------Lista de acciones-----\n1. Ingresar un producto\n2. Mostrar todos los productos\n3. Buscar un producto\n4. Calcular el inventario\n5. Mostrar los productos por categoría\n6. Salir")
     select = input("Seleccione una opción: ")
@@ -14,18 +14,27 @@ while True:
                 except:
                     print("Ingrese un número entero")
 
-            for i in cant:
-                codigo = input("Ingrese el código del producto: ")
+            for i in range(cant):
+                while True:
+                    try:
+                        codigo = int(input("Ingrese el código del producto: "))
+                        if codigo<0:
+                            print("Ingrese un valor positivo")
+                        else:
+                            break
+                    except:
+                        print("Ingrese un número entero")
+
                 nombre = input("Ingrese el nombre del producto: ")
                 categoria = input("Ingrese la categoria del producto: ")
                 talla = input("Ingrese la talla del producto: ")
                 while True:
                     try:
                         precio = int(input("Ingrese el precio del producto: "))
-                        stock = input("Ingrese el stock del producto: ")
+                        stock = int(input("Ingrese el stock del producto: "))
                         if precio <=0:
                             print("El precio debe tener un valor positivo")
-                        if stock <=0:
+                        elif stock <=0:
                             print("El stock debe tener un valor positivo")
                         else:
                             break
@@ -44,7 +53,7 @@ while True:
             if not productos:
                 print("No hay productos ingresados")
             else:
-                for ID, producto in productos:
+                for ID, producto in productos.items():
                     print(f"\nCodigo: {ID}\nNombre: {producto['nombre']}\nCategoria: {producto['categoria']}\nTalla: {producto['talla']}\nPrecio: Q{producto['precio']}\nStock: {producto['stock']}")
 
         case 3:
@@ -61,7 +70,7 @@ while True:
                 print("No hay productos ingresados")
             else:
                 total = 0
-                for ID, producto in productos:
+                for ID, producto in productos.items():
                     total += producto['precio'] * producto['stock']
                     print(f"\nNombre: {producto['nombre']}\n Subtotal: Q{producto['precio']*producto['stock']}")
                 print(f"Total: Q{total}")
@@ -71,19 +80,17 @@ while True:
                 print("No hay productos ingresados")
             else:
                 categorias = []
-                for ID, producto in productos:
+                for ID, producto in productos.items():
                     if producto['categoria'] not in categorias:
                         categorias.append(producto['categoria'])
 
                 for i in range(len(categorias)):
                     print(f"\nCategoría: {categorias[i]}")
                     categoria_cant = 0
-                    for ID, producto in productos:
+                    for ID, producto in productos.items():
                         if producto['categoria'] == categorias[i]:
                             categoria_cant += 1
-                            print(f"\nNombre: {producto}" + f"     talla: {producto['talla']}"+f"     Precio: Q{producto['precio']}" + f"     Stock: {producto['stock']}")
-
-
+                            print(f"\nNombre: {producto['nombre']}" + f"     talla: {producto['talla']}"+f"     Precio: Q{producto['precio']}" + f"     Stock: {producto['stock']}")
 
         case 6:
             print("Saliendo del programa...")
