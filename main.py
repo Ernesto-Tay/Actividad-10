@@ -57,7 +57,15 @@ while True:
                 else:
                     print("No se encontrado un producto con ese código")
         case 4:
-            pass
+            if not productos:
+                print("No hay productos ingresados")
+            else:
+                total = 0
+                for ID, producto in productos:
+                    total += producto['precio'] * producto['stock']
+                    print(f"\nNombre: {producto['nombre']}\n Subtotal: {producto['precio']*producto['stock']}")
+                print(f"Total: {total}")
+
         case 5:
             pass
         case 6:
