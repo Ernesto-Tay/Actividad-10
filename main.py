@@ -64,7 +64,7 @@ while True:
                 if ID_search in productos:
                     print(f"\nProducto encontrado\nNombre: {productos[ID_search]['nombre']}\nCategoria: {productos[ID_search]['categoria']}\nTalla: {productos[ID_search]['talla']}\nPrecio: Q{productos[ID_search]['precio']}\nStock: {productos[ID_search]['stock']}")
                 else:
-                    print("No se encontrado un producto con ese código")
+                    print("No se ha encontrado un producto con ese código")
         case "4":
             if not productos:
                 print("No hay productos ingresados")
