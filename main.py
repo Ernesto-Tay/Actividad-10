@@ -3,7 +3,7 @@ while True:
     print("\n\n------Lista de acciones-----\n1. Ingresar un producto\n2. Mostrar todos los productos\n3. Buscar un producto\n4. Calcular el inventario\n5. Mostrar los productos por categoría\n6. Salir")
     select = input("Seleccione una opción: ")
     match select:
-        case 1:
+        case "1":
             while True:
                 try:
                     cant = int(input("Cantidad de productos que ingresará: "))
@@ -49,14 +49,14 @@ while True:
                     "stock": stock
                 }
 
-        case 2:
+        case "2":
             if not productos:
                 print("No hay productos ingresados")
             else:
                 for ID, producto in productos.items():
                     print(f"\nCodigo: {ID}\nNombre: {producto['nombre']}\nCategoria: {producto['categoria']}\nTalla: {producto['talla']}\nPrecio: Q{producto['precio']}\nStock: {producto['stock']}")
 
-        case 3:
+        case "3":
             if not productos:
                 print("No hay productos ingresados")
             else:
@@ -65,7 +65,7 @@ while True:
                     print(f"\nProducto encontrado\nNombre: {productos[ID_search]['nombre']}\nCategoria: {productos[ID_search]['categoria']}\nTalla: {productos[ID_search]['talla']}\nPrecio: Q{productos[ID_search]['precio']}\nStock: {productos[ID_search]['stock']}")
                 else:
                     print("No se encontrado un producto con ese código")
-        case 4:
+        case "4":
             if not productos:
                 print("No hay productos ingresados")
             else:
@@ -75,7 +75,7 @@ while True:
                     print(f"\nNombre: {producto['nombre']}\n Subtotal: Q{producto['precio']*producto['stock']}")
                 print(f"Total: Q{total}")
 
-        case 5:
+        case "5":
             if not productos:
                 print("No hay productos ingresados")
             else:
@@ -92,7 +92,7 @@ while True:
                             categoria_cant += 1
                             print(f"\nNombre: {producto['nombre']}" + f"     talla: {producto['talla']}"+f"     Precio: Q{producto['precio']}" + f"     Stock: {producto['stock']}")
 
-        case 6:
+        case "6":
             print("Saliendo del programa...")
             break
         case _:
