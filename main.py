@@ -41,9 +41,21 @@ while True:
                 }
 
         case 2:
-            pass
+            if not productos:
+                print("No hay productos ingresados")
+            else:
+                for ID, producto in productos:
+                    print(f"\nCodigo: {ID}\nNombre: {producto['nombre']}\nCategoria: {producto['categoria']}\nTalla: {producto['talla']}\nPrecio: {producto['precio']}\nStock: {producto['stock']}")
+
         case 3:
-            pass
+            if not productos:
+                print("No hay productos ingresados")
+            else:
+                ID_search = input("Ingrese el código del producto que desea buscar: ")
+                if ID_search in productos:
+                    print(f"\nProducto encontrado\nNombre: {productos[ID_search]['nombre']}\nCategoria: {productos[ID_search]['categoria']}\nTalla: {productos[ID_search]['talla']}\nPrecio: {productos[ID_search]['precio']}\nStock: {productos[ID_search]['stock']}")
+                else:
+                    print("No se encontrado un producto con ese código")
         case 4:
             pass
         case 5:
