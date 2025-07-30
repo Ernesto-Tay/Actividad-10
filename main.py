@@ -4,7 +4,42 @@ while True:
     select = input("Seleccione una opción: ")
     match select:
         case 1:
-            pass
+            while True:
+                try:
+                    cant = int(input("Cantidad de productos que ingresará: "))
+                    if cant<=0:
+                        print("Ingrese un valor positivo")
+                    else:
+                        break
+                except:
+                    print("Ingrese un número entero")
+
+            for i in cant:
+                codigo = input("Ingrese el código del producto: ")
+                nombre = input("Ingrese el nombre del producto: ")
+                categoria = input("Ingrese la categoria del producto: ")
+                talla = input("Ingrese la talla del producto: ")
+                while True:
+                    try:
+                        precio = int(input("Ingrese el precio del producto: "))
+                        stock = input("Ingrese el stock del producto: ")
+                        if precio <=0:
+                            print("El precio debe tener un valor positivo")
+                        if stock <=0:
+                            print("El stock debe tener un valor positivo")
+                        else:
+                            break
+                    except:
+                        print("Ingrese números enteros por favor")
+
+                productos[codigo] = {
+                    "nombre": nombre,
+                    "categoria": categoria,
+                    "talla": talla,
+                    "precio": precio,
+                    "stock": stock
+                }
+
         case 2:
             pass
         case 3:
